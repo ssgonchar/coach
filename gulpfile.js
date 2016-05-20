@@ -1,7 +1,7 @@
-var fs = require('fs');
-var path = require('path');
-
-var gulp = require('gulp');
+var fs = require('fs'),
+    path = require('path'),
+    gulp = require('gulp'),
+    browserSync = require('browser-sync');
 
 // Load all gulp plugins automatically
 // and attach them to the `plugins` object
@@ -169,9 +169,69 @@ gulp.task('lint:js', function () {
 });
 
 
+/*********************************************************************
+ *  2. HTTP SERVER FOR LOCAL DEVELOPMENT
+ /********************************************************************/
+// ---------------------------------------------------------------------
+//  HTTP server (for local development)
+//  --reload browser window on changes--
+//
+// *** this task reloading browser window on all connected devices and
+//     sync state (scroll position, form filling, etc.)
+//
+//
+// CONNECTION TO STAGING SERVER
+//
+// from current pc
+// > developing page http://localhost:900*
+// > session options http://localhost:300*
+//
+// from any device in current local network
+// > developing page http://192.168.0.*:900*
+// > session options http://192.168.0.*:300*
+// (you can see actual ip in terminal window when sync will be started)
+// ---------------------------------------------------------------------
+gulp.task("serve:src", function () {
+    browserSync({
+        port: 9000,
+        server: {
+            baseDir: dirs.src
+        }
+    });
+
+});
+
+// CONNECTION TO DIST SERVER
+//
+// from current pc
+// > developing page http://localhost:990*
+// > session options http://localhost:390*
+//
+// from any device in current local network
+// > developing page http://192.168.0.*:990*
+// > session options http://192.168.0.*:390*
+gulp.task("serve:dist", function () {
+    browserSync({
+        port: 9900,
+        server: {
+            baseDir: dirs.src
+        }
+    });
+});
+
 // ---------------------------------------------------------------------
 // | Main tasks                                                        |
 // ---------------------------------------------------------------------
+
+gulp.task('watch', function () {
+    gulp.watch(dirs.src+'/templates/**/*', ['build']);
+    gulp.watch(dirs.src+'/styl/**/*', ['build']);
+    gulp.watch([
+        dirs.src+'/*.html',
+        dirs.src+'/js/**/*.js',
+        dirs.src+'/css/**/*.css'
+    ]).on('change', browserSync.reload);
+});
 
 gulp.task('archive', function (done) {
     runSequence(
@@ -188,4 +248,4 @@ gulp.task('build', function (done) {
         done);
 });
 
-gulp.task('default', ['build']);
+gulp.task('default', ['build', 'serve:src', 'watch']);

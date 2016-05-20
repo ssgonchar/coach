@@ -55,18 +55,14 @@ ul.phones li.phones__item .number {
   padding: 15px;
   border-radius: 3px;
   border: 1px solid #dfdfdf;
-  transition: all 0.4s ease-in;
-}
-.promo__form input[type=text]:hover,
-.promo__form input[type=password]:hover,
-.promo__form input[type=name]:hover {
-  transform: scale(1.3em);
+  transition: all 0.2s ease-in-out;
+  outline: none;
 }
 .promo__form input[type=text]:focus,
 .promo__form input[type=password]:focus,
 .promo__form input[type=name]:focus {
-  border: 1px solid #8096a9;
-  box-shadow: 0 1px 0 3px rgba(66,74,83,0.94), inset 0 -1px 6px 2px #485561;
+  border: 1px solid #ccc;
+  box-shadow: 0 0px 5px 0px rgba(255,255,255,0.94), inset 0 -1px 6px 2px rgba(0,0,0,0.3);
   transform: width 20px;
 }
 .promo__form button,
@@ -85,11 +81,12 @@ ul.phones li.phones__item .number {
 }
 .promo__form button:hover,
 .promo__form input[type=submit]:hover {
-  background: rgba(67,119,75,0.44);
-  box-shadow: inset 0 0 1px 1px rgba(7,12,10,0.44), inset 1px 3px 5px 0px rgba(7,12,10,0.44);
-  color: #597359;
+  outline: none;
+  background: rgba(67,119,75,0.14);
+  box-shadow: 0 2px 1px 1px rgba(39,39,39,0.38), inset 0 5px 15px 1px #fff;
+  color: #fff;
   border-color: rgba(226,255,241,0.81);
-  text-shadow: 1px 1px 1px rgba(241,255,247,0.55);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
 }
 .header__column {
   width: 50%;
@@ -100,10 +97,6 @@ ul.phones li.phones__item .number {
 .header__column--right {
   float: right;
 }
-.animation-target:hover {
-  animation: animation 1200ms linear both;
-}
-/* Generated with Bounce.js. Edit at http://goo.gl/CV58m7 */
 .animation-target {
   animation: animation 1000ms linear both;
 }
@@ -119,7 +112,6 @@ ul.phones li.phones__item .number {
 .delay4s {
   animation-delay: 0.14s;
 }
-/* Generated with Bounce.js. Edit at http://goo.gl/bkOekC */
 .content__title {
   font: 25px;
   color: #1d4f93;
@@ -161,7 +153,6 @@ ul.phones li.phones__item .number {
 .animation-target {
   animation: animation 750ms linear both;
 }
-/* Generated with Bounce.js. Edit at http://goo.gl/MMDwjm */
 @-moz-keyframes animation {
   0% {
     transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);

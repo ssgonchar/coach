@@ -199,7 +199,8 @@ ul.phones li.phones__item .number {
 @media screen and (max-width: 780px) {
   .header__column--right {
     padding: 0.5em;
-    width: 95%;
+    width: 100%;
+    background: #fff;
   }
   .header__column--left {
     float: none;
@@ -207,7 +208,6 @@ ul.phones li.phones__item .number {
   }
   .person {
     width: 41.66%;
-    display: none;
   }
   .promo__form {
     width: 50%;

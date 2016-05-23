@@ -214,7 +214,7 @@ gulp.task("serve:dist", function () {
     browserSync({
         port: 9900,
         server: {
-            baseDir: dirs.src
+            baseDir: dirs.dist
         }
     });
 });
